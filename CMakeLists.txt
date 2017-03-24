@@ -24,9 +24,8 @@ set(CPACK_PACKAGE_VERSION_PATCH "${PATCH_VERSION}")
 #set(CPACK_DEBIAN_PACKAGE_DEPENDS "vim-gnome")
 #set(CPACK_DEBIAN_PACKAGE_DEPENDS "vim")
 #set(CPACK_DEBIAN_PACKAGE_DEPENDS "cmake-qt-gui" "slurm" "vim" "vim-gnome")
-set(CPACK_DEBIAN_PACKAGE_DEPENDS "cmake-qt-gui")
-list(APPEND CPACK_DEBIAN_PACKAGE_DEPENDS "vim")      # 使用list append, 避免参数挤在一起.
-list(APPEND CPACK_DEBIAN_PACKAGE_DEPENDS "vim-gnome")      # 使用list append, 避免参数挤在一起.
+
+include(./pkgLists.cmake)       # pkgLists.cmake由脚本文件自动生成
 
 set(CPACK_PACKAGE_DESCRIPTION "pro-cc service")
 
