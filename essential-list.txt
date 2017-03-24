@@ -103,13 +103,6 @@ clementine       # 很好, 还不知道用来干嘛的, 似乎可以听音乐
 # stardict官网是: http://stardict.sourceforge.net/Dictionaries_zh_CN.php
 stardict  # 星际译王, 支持apt-get 安装 (具体字典需要自行安装)
 
-# YouDao 有道词典Ubuntu版本官网 http://cidian.youdao.com/index-linux.html
-# 1: 安装方法: gdebi  youdao*.deb  # 失败, 提示qml-module-qtquick-controls缺失
-# 2: sudo  apt-get  -f  install    # 注意install后面什么都不带
-# 3: sudo  dpkg -i  youdao*.deb
-# 4: sudo  apt-get  -f  install    # 然后就可以从dash启动了
-# 5: 奇怪, 下次apt-get install, 必须将上次的youdao-dict删除
-youdao-dict     # 自己找deb包, 有依赖不好解决.
 
 wordnet  # 英文词典, 仅仅能查英文: aptitude install, 基于Princeton普林斯顿认知学的词典
 
@@ -239,10 +232,10 @@ slashem             # nethack的新版
 
 
 # C/C++库: 注意这些lib库, 既可以使用apt安装, 也可以手动编译安装
-libqt4-dev          # qt库
-libboost-dev        # boost库
-libgoogle-glog-dev  # glob库
-libdb-dev           # berkeley db库
+#libqt4-dev          # qt库
+#libboost-dev        # boost库
+#libgoogle-glog-dev  # glob库
+#libdb-dev           # berkeley db库
 
 
 # 输入法
