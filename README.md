@@ -36,13 +36,14 @@
     1- 编辑 essential-list.txt, 在其中添加自己的软件依赖列表, 注意这些列表要能在你本机的仓库中找到.
         本txt支持 '#' 注释
 
-    2- 运行shell脚本生成 pkgLists.cmake.  pkgLists.cmake 被 CMakeLists.txt 所include
+    2- 运行shell脚本生成 pkgLists.cmake.  pkgLists.cmake 被 CMakeLists.txt 所include.
         addLists.sh
 
-    3- 进入build编译生成 myenv-essential.deb包
+    3- 进入build编译生成 myenv-essential.deb包, 生成后使用dpkg-deb -I查看包信息.
         cd build
         cmake ../
         make  package
+        dpkg-deb  -I  myenv-essential.deb   # 查看生成包的信息是否正确.
 
     4- 使用gdebi 安装deb包.( 因为gdebi可以自动解决依赖, 这正是本包的目的所在 )
         gdebi  myenv-essential-1.0.0-Linux.deb      # 通过安装myenv-essential, 安装了列表依赖中所有的包
