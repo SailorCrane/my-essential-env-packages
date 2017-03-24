@@ -1,3 +1,5 @@
+#set(CPACK_DEBIAN_PACKAGE_DEPENDS "libc6 (>= 2.3.1-6)")
+
 set(CPACK_DEBIAN_PACKAGE_DEPENDS "cmake-qt-gui")
 
 list(APPEND CPACK_DEBIAN_PACKAGE_DEPENDS "vim")            # 使用list append, 避免参数挤在一起.
