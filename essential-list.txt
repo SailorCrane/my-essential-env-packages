@@ -1,0 +1,253 @@
+#  vim: set ft=sh  :vim modeline
+# 使用 vim set filetype=sh, 只是为了可以更好的看清注释!!! 别无他意.
+
+
+# Ubuntu apt-get安装软件后, 包都备份在如下目录:
+# 可以使用sudo apt-get clean 清除
+# apt-get/aptitude download  packageName 可以将deb包下载到本地
+# /var/cache/apt/archives
+
+# 最重要
+aptitude
+gdebi       # (安装本地deb包, 并解决依赖): (dpgk -i 安装本地包, 不会自动解决依赖)
+
+
+# 这些都依赖于build-essential ,直接安装build-essential即可
+#gcc
+#g++, make,  develop-essential
+#git            # 默认安装
+git-doc         # git help  commit -w, 支持html查看
+build-essential
+cgdb            # gdb 终端gui
+
+
+vim
+vim-gnome       # Ubuntu默认不安装vim, 和 gvim, 使用的是vi
+
+
+cmake
+cmake-curses-gui
+cmake-qt-gui
+
+
+#python相关
+python-pip      # 提供python2版本的pip
+python3-pip     # 提供python3 版本的pip
+
+# 终端复用
+tmux
+byobu   # 可选, 事tmux的后端
+#screen  # gnu screen, 似乎比tmux更好用
+#dtach   # 可选, 不用安装.
+
+
+# windows 相关
+ntfs-3g     # 打开ntfs文件系统
+#samba       # 视情况而定, 不过nautilus已经有samba插件了
+#nautilus-share  # 就是nautilus Samba插件
+
+
+# Ubuntu16.04 nautilus已经自带nautilus-open-terminal这个工具, 但是Ubuntu14要单独安装
+# 安装后, 注销登录才会生效
+#nautilus-open-terminal
+
+# 可是最后还是没有装成功easy-union-nautilus, 压根search不到, apt-get update时, fetch 网址错误, 打开网址, 发现没有trusty以上版本.
+# 最高版本为natty 11.04
+# sudo add-apt-repository ppa:zanko/daemontux-stuff
+# sudo apt-get update
+# sudo apt-get install easy-union-nautilus
+# nautilus -q
+#union插件       # 可以在单个目录中, 查看多个目录
+
+
+# 提供类似于windows的任务栏(安装后必须注销重新进入, 开启启动tint2最好)
+# 开机启动使用Ubuntu提供的startup程序添加( dash搜索 startup )
+tint2
+
+# ( 可以考虑卸载amazon, Ubuntu默认安装)
+
+# 代码相关
+#idle    # Python IDE, 不好用, 没什么用
+qtcreator           # 注意名字, 只有使用qtcreator, apt库中才能找到
+
+
+# 翻墙专用浏览器, firefox用来非翻墙使用
+chromium-browser    # ss-qt5 + switcy-omega
+
+
+# 分享, 通信
+iptux
+# 也是为了安全, 所以默认不安装openssh-server
+#openssh-server      # ssh服务器 (让其他人可以登录自己的主机), openssh-client默认安装
+
+
+# 工作
+meld                #  diff view, 还有一款beyond
+wireshark
+dia-gnome           # Diagram editor (GNOME version), UML图工具
+
+# 高效系统小工具
+unity-tweak-tool    # 禁止dash搜索推荐, 设置主题
+gnome-tweak-tool    # gnome桌面的twea
+
+dconf-editor        # 设置gedit支持的字体, 设置顶部时间(显示日期等)
+
+
+# 娱乐/Music
+smplayer         # 视频播放器
+clementine       # 很好, 还不知道用来干嘛的, 似乎可以听音乐
+
+
+
+# 词典  在software center中搜索 dict, 有很多软件发现, 有些需要收费
+# stardict官网是: http://stardict.sourceforge.net/Dictionaries_zh_CN.php
+stardict  # 星际译王, 支持apt-get 安装 (具体字典需要自行安装)
+
+# YouDao 有道词典Ubuntu版本官网 http://cidian.youdao.com/index-linux.html
+# 1: 安装方法: gdebi  youdao*.deb  # 失败, 提示qml-module-qtquick-controls缺失
+# 2: sudo  apt-get  -f  install    # 注意install后面什么都不带
+# 3: sudo  dpkg -i  youdao*.deb
+# 4: sudo  apt-get  -f  install    # 然后就可以从dash启动了
+# 5: 奇怪, 下次apt-get install, 必须将上次的youdao-dict删除
+youdao-dict     # 自己找deb包, 有依赖不好解决.
+
+wordnet  # 英文词典, 仅仅能查英文: aptitude install, 基于Princeton普林斯顿认知学的词典
+
+
+# ftp
+#nautilus   # 本身可以连接ftp服务器
+filezilla  # 也是一个不错的客户端
+
+
+# 非必要
+leafpad    # 相对于notepad, 可以自动识别文件编码(utf-8)
+okular     # pdf阅读区, Ubuntu默认安装 evince, 所以不需要了, 但是okular可以添加书签
+
+
+# 截图软件/录屏
+shutter         # 截图软件
+
+
+# dock软件: 非必要
+plank
+
+
+# 图形处理
+gimp
+
+
+# 财务软件
+gnucash
+
+# 电子书管理
+calibre
+
+# 下载工具
+uget        # 比自带的种子下载工具好
+
+# 软件管理工具
+synaptic    # 新立德
+
+# 星空模拟软件
+stellarium
+
+# guake-terminal
+# 在 Startup Applications 中添加guake -f, 开机时自动启动guake
+# 在 /usr/share/applications/guake.desktop 中修改Exec为 guake -f, 这样每次dash搜索中打开guake, 就是全屏了(省的按F11)
+guake
+
+
+# 清理工具, 类似于windows CCleaner
+bleachbit   # 比如可以清楚firefox cache等
+
+# 电源管理
+laptop-mode-tools
+
+# 视频处理/转换格式
+ffmpeg          # 命令行工具
+
+# 密码管理
+keepassx
+
+# top 的更友好版本
+htop
+iotop       # io 监控
+
+
+# 压缩相关
+#p7zip      # 7zip 工具, 非必须
+zip
+rar
+
+
+# 清理软件, 清理垃圾文件, 浏览历史等
+bleachbit
+
+
+gstm  # ssh tunnel
+proxychains # 设置代理
+
+
+# 桌面
+xfce4   # xfce4 安装后, 自动安装gnome
+gnome-session-flashback             # gnome桌面
+compizconfig-settings-manager       # 设置compize 3D效果
+
+
+# tags
+ctags
+cscope
+
+
+# 分区工具, 必备神器
+gparted
+
+
+# 文件管理相关
+ranger          # ranger也有相关书签
+
+
+# 网络相关: 监控, 流量分析, socket
+nethogs     # nethogs :Linux下按进程实时统计网络带宽利用率, 显示使用网络的进程, 非常有用!!!: sudo nethogs
+iftop       # 不同于ntop
+ntop
+ifstat
+slurm       # slurm -i  lo/<网卡名>  # 网卡名是使用ifconfig -a查看到的网卡, 主要用于查看负载均衡.
+
+glances     # 我也不知道干啥的, 系统监控用
+
+socat       # 更方便连接socket, 猜测类似于nc
+#nc         # net cat, 默认安装
+
+# 系统监控工具
+# vmstat seconds也很好用,不过vmstat是系统自带, 位于procps包中
+
+
+# 日志多窗口查看, 颜色过滤
+multitail       # multi tail
+
+
+# web载入测试工具, 都没有用过
+siege
+tsung
+
+
+# 游戏
+gbrainy             # 智力游戏, 大学上课消遣用
+nethack-console     # 依赖nethack-common, 终端游戏
+slashem             # nethack的新版
+
+
+# C/C++库: 注意这些lib库, 既可以使用apt安装, 也可以手动编译安装
+libqt4-dev          # qt库
+libboost-dev        # boost库
+libgoogle-glog-dev  # glob库
+libdb-dev           # berkeley db库
+
+
+# 输入法
+fcitx-googlepinyin          # google-pinyin, 安装完毕后, logout, 再login
+                            # 就可以使用了. 不需要在fcitx-config中配置.
+
+# 桌面
+ubuntu-gnome-desktop        # gnome3

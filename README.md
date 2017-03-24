@@ -37,6 +37,7 @@
         本txt支持 '#' 注释
 
     2- 运行shell脚本生成 pkgLists.cmake.  pkgLists.cmake 被 CMakeLists.txt 所include.
+        如果已经存在pkgLists.cmake, 再次运行addLists.sh 会覆盖原有 pkgLists.cmake
         addLists.sh
 
     3- 进入build编译生成 myenv-essential.deb包, 生成后使用dpkg-deb -I查看包信息.
