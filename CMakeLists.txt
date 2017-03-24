@@ -4,7 +4,7 @@ cmake_minimum_required(VERSION 2.6)
 
 #set(CMAKE_INSTALL_PREFIX  ./usr)
 
-project(test-pac)
+project(myenv-essential)
 # 使用project( pro_name )命令后
 # Cmake 系统也帮助我们预定义了 PROJECT_BINARY_DIR和PROJECT_SOURCE_DIR其值与上述对应相等
 # <project name>_BINARY_DIR(二进制文件保存路径)    <project name>_SOURCE_DIR（源代码路径）
