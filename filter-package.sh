@@ -1,4 +1,5 @@
-listTxt=./essential-list.txt
+listTxt=./ubuntu-essential-list.txt
+
 grep -v -E '^ *#' ${listTxt}   -v \
      | grep -e "^$" -v            \
      | awk '{print $1}'
