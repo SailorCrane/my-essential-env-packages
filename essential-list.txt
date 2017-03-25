@@ -36,7 +36,7 @@ python3-pip     # 提供python3 版本的pip
 
 # 终端复用
 tmux
-byobu   # 可选, 事tmux的后端
+#byobu   # 可选, 事tmux的后端, 移到非必备软件.txt中
 #screen  # gnu screen, 似乎比tmux更好用
 #dtach   # 可选, 不用安装.
 
@@ -83,8 +83,9 @@ iptux
 
 # 工作
 meld                #  diff view, 还有一款beyond
-wireshark
-dia-gnome           # Diagram editor (GNOME version), UML图工具
+#wireshark
+dia                  # 和 dia-gnome 二选一, 应该是这样
+#dia-gnome           # Diagram editor (GNOME version), UML图工具
 
 # 高效系统小工具
 unity-tweak-tool    # 禁止dash搜索推荐, 设置主题
@@ -109,12 +110,12 @@ wordnet  # 英文词典, 仅仅能查英文: aptitude install, 基于Princeton�
 
 # ftp
 #nautilus   # 本身可以连接ftp服务器
-filezilla  # 也是一个不错的客户端
+#filezilla  # 也是一个不错的客户端
 
 
 # 非必要
-leafpad    # 相对于notepad, 可以自动识别文件编码(utf-8)
-okular     # pdf阅读区, Ubuntu默认安装 evince, 所以不需要了, 但是okular可以添加书签
+#leafpad    # 相对于notepad, 可以自动识别文件编码(utf-8)
+#okular     # pdf阅读区, Ubuntu默认安装 evince, 所以不需要了, 但是okular可以添加书签
 
 
 # 截图软件/录屏
@@ -130,16 +131,16 @@ gimp
 
 
 # 财务软件
-gnucash
+#gnucash
 
 # 电子书管理
 calibre
 
 # 下载工具
-uget        # 比自带的种子下载工具好
+#uget        # 比自带的种子下载工具好
 
 # 软件管理工具
-synaptic    # 新立德
+#synaptic    # 新立德
 
 # 星空模拟软件
 stellarium
@@ -154,10 +155,10 @@ guake
 bleachbit   # 比如可以清楚firefox cache等
 
 # 电源管理
-laptop-mode-tools
+#laptop-mode-tools
 
 # 视频处理/转换格式
-ffmpeg          # 命令行工具
+#ffmpeg          # 命令行工具
 
 # 密码管理
 keepassx
@@ -182,9 +183,10 @@ proxychains # 设置代理
 
 
 # 桌面
-xfce4   # xfce4 安装后, 自动安装gnome
-gnome-session-flashback             # gnome桌面
-compizconfig-settings-manager       # 设置compize 3D效果
+#xfce4   # xfce4 安装后, 自动安装gnome
+#gnome-session-flashback             # gnome2
+#ubuntu-gnome-desktop                # gnome3
+#compizconfig-settings-manager       # 设置compize 3D效果
 
 
 # tags
@@ -203,11 +205,12 @@ ranger          # ranger也有相关书签
 # 网络相关: 监控, 流量分析, socket
 nethogs     # nethogs :Linux下按进程实时统计网络带宽利用率, 显示使用网络的进程, 非常有用!!!: sudo nethogs
 iftop       # 不同于ntop
-ntop
+#ntop
+#ntopng
 ifstat
 slurm       # slurm -i  lo/<网卡名>  # 网卡名是使用ifconfig -a查看到的网卡, 主要用于查看负载均衡.
 
-glances     # 我也不知道干啥的, 系统监控用
+#glances     # 我也不知道干啥的, 系统监控用
 
 socat       # 更方便连接socket, 猜测类似于nc
 #nc         # net cat, 默认安装
@@ -222,7 +225,7 @@ multitail       # multi tail
 
 # web载入测试工具, 都没有用过
 siege
-tsung
+#tsung
 
 
 # 游戏
@@ -242,5 +245,3 @@ slashem             # nethack的新版
 fcitx-googlepinyin          # google-pinyin, 安装完毕后, logout, 再login
                             # 就可以使用了. 不需要在fcitx-config中配置.
 
-# 桌面
-ubuntu-gnome-desktop        # gnome3
