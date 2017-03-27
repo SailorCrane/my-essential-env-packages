@@ -1,6 +1,17 @@
+function  filter-package {
+    listTxt=./ubuntu-essential-list.txt
+
+    # 第一行过滤注释
+    # 第二行过滤空白行
+    # 第三行输出包名
+    grep -v -E '^ *#' ${listTxt}   -v \
+         | grep -e "^$" -v            \
+         | awk '{print $1}'
+}
+
 function GetAddList {
-    pkgs=$(./filter-package.sh)
-    pkgCnts=$(./filter-package.sh | wc -l)
+    pkgs=$(filter-package)
+    pkgCnts=$(filter-package | wc -l)
 
     echo
     echo "note: there are  ${pkgCnts} packages is essential!!!"  1>&2
