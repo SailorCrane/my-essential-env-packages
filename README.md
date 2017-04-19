@@ -41,7 +41,7 @@
     2- 编辑 essential-list.txt, 在其中添加自己的软件依赖列表. 注意:这些列表必须能在apt/yum仓库中找到.
        提示: essential-list.txt支持 '#' 注释.
 
-    3- 运行 compile.sh  开始编译.
+    3- 运行 compile.sh  开始编译. 编译完毕后, 会输出生产的包名.
         ./compile.sh
 
     4- 使用gdebi 安装deb包.( 因为gdebi可以自动解决依赖, 这正是本包的目的所在. 如果没有安装gdebi, apt-get install  gdebi )
@@ -56,4 +56,3 @@
 3: 使用技术
     使用cmake 的cpack 生成deb/rpm包.
     使用bash脚本将 ubuntu-essential-list.txt 中的软件列表 添加到 pkgLists.cmake中.
-
