@@ -32,7 +32,7 @@
             util-linux
 
 
-1: 编译步骤:
+1: 项目细节(工具细节, 还谈不上项目):
     1- 如果要生成RPM包, 修改CMakeLists.txt中CPACK_GENERATOR 为 RPM: set(CPACK_GENERATOR "RPM")
        如果要生成DEB包, 修改CMakeLists.txt中CPACK_GENERATOR 为 DEB: set(CPACK_GENERATOR "DEB")
 
@@ -41,23 +41,13 @@
     2- 编辑 essential-list.txt, 在其中添加自己的软件依赖列表. 注意:这些列表必须能在apt/yum仓库中找到.
        提示: essential-list.txt支持 '#' 注释.
 
-    3- 运行 addLists.sh 脚本生成 pkgLists.cmake.  pkgLists.cmake 被 CMakeLists.txt 所include.(当然细节就不用管理, 运行脚本就是了)
-       如果已经存在pkgLists.cmake, 再次运行addLists.sh 会覆盖原有 pkgLists.cmake
+    3- 运行 compile.sh  开始编译.
+        ./compile.sh
 
-        ./addLists.sh
-
-    4- 进入build/编译生成 myenv-essential.deb包, 生成后使用dpkg-deb -I查看包信息.(具体命令步骤如下:)
-
-        cd build
-        cmake ../
-        make  package
-        dpkg-deb  -I  myenv-essential.deb   # 查看生成包的信息是否正确.
-        # rpm -qi myenv-essential.rpm   # 查看rpm包信息
-
-    5- 使用gdebi 安装deb包.( 因为gdebi可以自动解决依赖, 这正是本包的目的所在. 如果没有安装gdebi, apt-get install  gdebi )
+    4- 使用gdebi 安装deb包.( 因为gdebi可以自动解决依赖, 这正是本包的目的所在. 如果没有安装gdebi, apt-get install  gdebi )
        rpm/yum用户使用 yum 安装.(yum 安装本地文件, 也会自动解决依赖)
 
-        gdebi  myenv-essential-1.0.0-Linux.deb      # 通过安装myenv-essential, 安装了列表依赖中所有的包
+       gdebi  myenv-essential-1.0.0-Linux.deb      # 通过安装myenv-essential, 安装了列表依赖中所有的包
 
 
 2: 参考链接: http://www.open-open.com/lib/view/open1419165844339.html
