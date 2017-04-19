@@ -32,7 +32,8 @@
             util-linux
 
 
-1: 项目细节(工具细节, 还谈不上项目):
+1: 项目细节(工具细节, 还谈不上项目)
+
     1- 如果要生成RPM包, 修改CMakeLists.txt中CPACK_GENERATOR 为 RPM: set(CPACK_GENERATOR "RPM")
        如果要生成DEB包, 修改CMakeLists.txt中CPACK_GENERATOR 为 DEB: set(CPACK_GENERATOR "DEB")
 
