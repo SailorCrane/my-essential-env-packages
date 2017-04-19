@@ -44,10 +44,11 @@
     3- 运行 compile.sh  开始编译. 编译完毕后, 会输出生产的包名.
         ./compile.sh
 
-    4- 使用gdebi 安装deb包.( 因为gdebi可以自动解决依赖, 这正是本包的目的所在. 如果没有安装gdebi, apt-get install  gdebi )
-       rpm/yum用户使用 yum 安装.(yum 安装本地文件, 也会自动解决依赖)
+    4- 运行./install.sh 安装 生成的deb包.
+       # Ubuntu 借助gdebi, rpm借助 yum
+       # rpm/yum用户使用 yum 安装.(yum 安装本地文件, 也会自动解决依赖)
 
-       gdebi  myenv-essential-1.0.0-Linux.deb      # 通过安装myenv-essential, 安装了列表依赖中所有的包
+       ./install.sh
 
 
 2: 参考链接: http://www.open-open.com/lib/view/open1419165844339.html
