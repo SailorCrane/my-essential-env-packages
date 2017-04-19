@@ -1,5 +1,16 @@
 # vim: set foldmethod=marker  foldlevel=0: vim modeline( set )
 
+function  successMsg {
+# {{{
+    SETCOLOR_SUCCESS="echo -en \\033[1;32m"
+     SETCOLOR_NORMAL="echo -en \\033[0;39m"     # 之后的颜色恢复正常
+
+    #echo $1  &&  $SETCOLOR_FAILURE
+    $SETCOLOR_SUCCESS && echo $1        # 先设置颜色, 再输出信息
+    $SETCOLOR_NORMAL                    # 之后的颜色要正常才可以
+# }}}
+}
+
 filter-package() {
     # {{{
     listTxt=./ubuntu-essential-list.txt
@@ -13,14 +24,48 @@ filter-package() {
     # }}}
 }
 
+# 转换为小写
+sh_tolower() {
+    echo $1 | tr '[A-Z]'  '[a-z]'
+}
+
+
+sh_toupper() {
+    echo $1 | tr '[a-z]'  '[A-Z]'
+}
+
+# output  rpm or deb
+get-PackageSuffix() {
+    # {{{
+    local packSuffix="deb"        # 默认是DEB类型
+
+    if [ $# == 1 ]; then
+        packSuffix=$(sh_tolower ${1})
+    fi
+
+    echo  "${packSuffix}"
+    # }}}
+}
+
+#
+getCmakeType() {
+    # {{{
+        packType=$(sh_toupper ${1})
+        echo  "set(CPACK_GENERATOR \"${packType}\")"
+        echo
+    # }}}
+}
+
 getCmakeList() {
     # {{{
     pkgs=$(filter-package)
     pkgCnts=$(filter-package | wc -l)
 
-    echo
-    echo "note: there are  ${pkgCnts} packages is essential!!!"  1>&2
-    echo
+    echo    1>&2
+    successMsg  "note: there are  ${pkgCnts} packages is setting in your essential-list.txt !!!"  1>&2
+    echo    1>&2
+
+    #get-packageType-cmake  $*       # 由get-packageType-cmake 来处理参数
 
     echo -n 'set(CPACK_DEBIAN_PACKAGE_DEPENDS "'
 
@@ -38,22 +83,23 @@ getCmakeList() {
     # }}}
 }
 
-function  successMsg {
-# {{{
-    SETCOLOR_SUCCESS="echo -en \\033[1;32m"
-     SETCOLOR_NORMAL="echo -en \\033[0;39m"     # 之后的颜色恢复正常
-
-    #echo $1  &&  $SETCOLOR_FAILURE
-    $SETCOLOR_SUCCESS && echo $1        # 先设置颜色, 再输出信息
-    $SETCOLOR_NORMAL                    # 之后的颜色要正常才可以
-# }}}
-}
-
 # 编译在build生成 package
+# example1: compile     # default is DEB
+# example2: compile  rpm
+# example3: compile  deb
 compile() {
     # {{{
+    local UsageMsg1="Usage: ./compile.sh [rpm/RPM/deb/Deb/DEB]"     # default is DEB
+    local UsageMsg2="Example: ./compile.sh rpm"     # default is DEB
+    successMsg "$UsageMsg1"
+    successMsg "$UsageMsg2"
+
+    local packageSuffix=$(get-PackageSuffix $*)                    # 文件后缀名, 需要小写.
+
     local pkgListCmake="pkgLists.cmake"            # 定义包含package list的cmake file的名字, 被CMakeLists.txt include
-    getCmakeList > $pkgListCmake             # 这里直接覆盖pkgLists.cmake的内容. 注意不是追加">>".
+
+    getCmakeType  $packageSuffix >  $pkgListCmake   # 这里">" 覆盖写入
+    getCmakeList  >>  $pkgListCmake                 # 这里 ">>"追加写入.
 
     local buildDir="./build"
 
@@ -66,7 +112,7 @@ compile() {
          make package    &&
          cd ../
 
-    local packageName="$(ls  ${buildDir}/*deb)"
+    local packageName="$(ls  ${buildDir}/*${packageSuffix})"
 
     echo && echo && echo        # 输出三行空白, 用以展现以下输出.
 
@@ -76,4 +122,4 @@ compile() {
     # }}}
 }
 
-compile
+compile $*
