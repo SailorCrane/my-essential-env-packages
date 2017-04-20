@@ -14,12 +14,26 @@ function  successMsg {
 installPackage() {
     # {{{
     local buildDir="./build"
-    local packageName="$(ls  ${buildDir}/*deb)"
+    local packageName="$(ls  ${buildDir}/myenv-essential*)"        # get package name
 
     echo -n "You are going to install package  "
     successMsg  "${packageName}"        # 给用户输出编译产生的包名.
 
-    sudo gdebi  $packageName
+    # deb install
+    # 注意通配写法: *deb*两边不可以有引号,  =~两边不能有空格.
+    if  [  ${packageName}=~*deb* ] ; then
+        sudo gdebi  $packageName
+        return $?
+    fi
+
+    # rpm install
+    if [ "${packageName}"=~*rpm ] ; then
+        sudo yum install $packageName
+        return $?
+    fi
+
+    echo  "${packageName}:  Package Type doesnt recognize"
+    return -1
 
     # }}}
 }
