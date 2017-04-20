@@ -7,18 +7,21 @@
 # apt-get/aptitude download  packageName 可以将deb包下载到本地
 # /var/cache/apt/archives
 
-# 最重要
+# 包相关
 aptitude
 gdebi       # (安装本地deb包, 并解决依赖): (dpgk -i 安装本地包, 不会自动解决依赖)
+alien       # 在rpm/deb/slackware/tagz 等之间转换工具.
 
 
 # 这些都依赖于build-essential ,直接安装build-essential即可
 #gcc
 #g++, make,  develop-essential
 #git            # 默认安装
-git-doc         # git help  commit -w, 支持html查看
+gitk            # git 图形化客户端
+gitg            # git 图形化客户端
+git-doc         # git help  commit -w, 支持html查看: git hw is myalias
 build-essential
-cgdb            # gdb 终端gui
+cgdb            # gdb 终端ui
 
 
 vim
@@ -33,6 +36,10 @@ cmake-qt-gui
 #python相关
 python-pip      # 提供python2版本的pip
 python3-pip     # 提供python3 版本的pip
+python-dev      # 开发相关
+
+# C/C++ Ide
+codeblocks
 
 # 终端复用
 tmux
@@ -79,25 +86,31 @@ chromium-browser    # ss-qt5 + switcy-omega
 iptux
 # 也是为了安全, 所以默认不安装openssh-server
 #openssh-server      # ssh服务器 (让其他人可以登录自己的主机), openssh-client默认安装
+#putty  ssh 客户端: 公钥秘钥都使用本地已经配置好的.
 
 
 # 工作
 meld                #  diff view, 还有一款beyond
 #wireshark
-dia                  # 和 dia-gnome 二选一, 应该是这样
+dia                  # dia editor
 #dia-gnome           # Diagram editor (GNOME version), UML图工具
 
 # 高效系统小工具
 unity-tweak-tool    # 禁止dash搜索推荐, 设置主题
 gnome-tweak-tool    # gnome桌面的twea
 
-dconf-editor        # 设置gedit支持的字体, 设置顶部时间(显示日期等)
+dconf-editor        # gsetting命令的图形前端
+                    # 设置gedit支持的字体, 设置顶部时间(显示日期等)
+                        # gsettings set org.gnome.gedit.preferences.encodings auto-detected "['UTF-8', 'GBK', 'CURRENT', 'ISO-8859-15', 'UTF-16']"
+                    # 设置fcitx 不要覆盖xmodmap设置.
+                        # gsettings set org.gnome.settings-daemon.plugins.keyboard active false
 
 
 # 娱乐/Music
 smplayer         # 视频播放器
+gnash            # swf视频播放器, 使用gnash-gtk-launcher命令播放.
 clementine       # 很好, 还不知道用来干嘛的, 似乎可以听音乐
-
+tomahawk         # 音乐播放器
 
 
 # 词典  在software center中搜索 dict, 有很多软件发现, 有些需要收费
@@ -182,11 +195,12 @@ gstm  # ssh tunnel
 proxychains # 设置代理
 
 
-# 桌面
+# 桌面相关
 #xfce4   # xfce4 安装后, 自动安装gnome
 #gnome-session-flashback             # gnome2
 #ubuntu-gnome-desktop                # gnome3
 #compizconfig-settings-manager       # 设置compize 3D效果
+compizconfig-settings-manager        # Win+D show desktop(显示桌面快捷键): 搜索unity-plugin, 然后设置show-desktop的快捷键
 
 
 # tags
@@ -204,6 +218,8 @@ ranger          # ranger也有相关书签
 
 # 网络相关: 监控, 流量分析, socket
 nethogs     # nethogs :Linux下按进程实时统计网络带宽利用率, 显示使用网络的进程, 非常有用!!!: sudo nethogs
+            # 可以测试某进程, 是否有读写网络流量等.
+
 iftop       # 不同于ntop
 #ntop
 #ntopng
@@ -212,8 +228,11 @@ slurm       # slurm -i  lo/<网卡名>  # 网卡名是使用ifconfig -a查看到
 
 #glances     # 我也不知道干啥的, 系统监控用
 
-socat       # 更方便连接socket, 猜测类似于nc
-#nc         # net cat, 默认安装
+#socat       # 更方便连接socket, 猜测类似于nc
+#nc         # net cat, 默认安装.可以用来调试tcp服务端和客户端.
+            # nc hostIp Port
+
+nmap        # 可以测试局域网启动主机.默认不安装.
 
 # 系统监控工具
 # vmstat seconds也很好用,不过vmstat是系统自带, 位于procps包中
@@ -229,6 +248,7 @@ siege
 
 
 # 游戏
+sl                  # 可以运行LS执行, 跑火车. 没啥.
 gbrainy             # 智力游戏, 大学上课消遣用
 nethack-console     # 依赖nethack-common, 终端游戏
 slashem             # nethack的新版
@@ -245,3 +265,16 @@ slashem             # nethack的新版
 fcitx-googlepinyin          # google-pinyin, 安装完毕后, logout, 再login
                             # 就可以使用了. 不需要在fcitx-config中配置.
 
+# 自动交互
+expect
+
+# scheme compiler
+chicken-bin         # csi command
+#tinyscheme          # tiny scheme implements
+#racket              # scheme
+
+mutt    # 邮件阅读客户端
+
+
+#
+fakeroot        # 模拟root用户. 测试安装程序等可以使用.
